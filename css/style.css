@@ -1,0 +1,163 @@
+/* Importa as fontes Ephesis e Poppins do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Ephesis&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+/* Estilos base para o corpo do documento, centralizando todo o conteúdo */
+body {
+    height: 100vh; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+}
+
+/* Estilos para os flocos de neve */
+.snow {
+    position: absolute; 
+    transform: translateY(0); 
+    color: white; 
+    font-size: 35px; 
+    animation: fall 1s linear;
+    top: -10vh; 
+}
+
+/* Estilos para o cartão de natal */
+.card {
+    overflow: hidden; 
+    position: relative; 
+    width: 450px; 
+    height: 500px;
+    background-color: #9eecf1; 
+    box-shadow: 15px 1px 50px rgba(0, 0, 0, .2); 
+    border-radius: 10px; 
+}
+
+/* Pseudo-elemento para estilização adicional */
+.card:before {
+    content: "";
+    position: absolute; 
+    width: 550px;
+    height: 250px; 
+    background-color: white; 
+    border-radius: 50%; 
+    top: 300px; 
+    left: -25px; 
+    box-shadow: -130px -10px #f8f9fa, 80px -20px #e9ecef; 
+}
+
+/* Estilos para os ícones dentro do cartão */
+.icons {
+    position: absolute; 
+    height: 150px; 
+    overflow: visible; 
+    top: 280px; 
+    left: 70px; 
+}
+
+/* Estilos para os desejos de natal dentro do cartão */
+.wishes {
+    position: absolute; 
+    color: #005F1C; 
+    top: 150px; 
+    width: 450px; 
+    text-align: center; 
+    font-size: 65px; 
+    font-family: 'Ephesis', cursive; 
+}
+
+/* Estilos para subtexto dentro do cartão */
+.subtext {
+    position: absolute; 
+    color: white; 
+    top: 250px; 
+    width: 450px; 
+    text-align: center; 
+    font-size: 20px; 
+    font-family: 'Poppins';
+}
+
+/* Animação para o movimento de queda dos flocos de neve */
+@keyframes fall {
+    0% {
+        top: -50px; /* Inicia acima do topo do cartão */
+    }
+    100% {
+        top: 900px; /* Termina abaixo do fundo do cartão */
+    }
+}
+
+/* Estilos para o cartão de natal 3D */
+.cartao-natal {
+    position: relative; 
+    width: 450px; 
+    height: 500px;
+    transform-style: preserve-3d; 
+    transform: perspective(2500px); 
+    transition: 3s; 
+}
+
+/* Esconde o checkbox usado para abrir o cartão */
+input#open {
+    display: none; /* Esconde o input */
+}
+
+/* Estilos para a frente do cartão */
+.card-front {
+    position: relative; 
+    background-color: #fff; 
+    width: 450px; 
+    height: 500px;
+    overflow: hidden; 
+    transform-origin: left; 
+    box-shadow: inset 100px 20px 100px rgba(0, 0, 0, .13), 30px 0 50px rgba(0, 0, 0, 0.1); 
+    border-radius: 10px; 
+    transition: .3s; 
+}
+
+/* Estilos para o interior do cartão */
+.card-inside {
+    position: absolute; 
+    background-color: #fff; 
+    width: 450px; 
+    height: 500px; 
+    z-index: -1; 
+    left: 0; 
+    top: 0; 
+    box-shadow: inset 100px 20px 100px rgba(0, 0, 0, .13); 
+    border-radius: 10px; 
+    background-color: #9eecf1; 
+}
+
+/* Estilos para o texto 'Clique para abrir' */
+.click-to-open {
+    position: absolute; 
+    color: white; 
+    top: 200px;
+    width: 450px; 
+    text-align: center; 
+    font-size: 35px;
+    font-family: 'Ephesis', cursive; 
+}
+
+/* Estilos para a área clicável que abre o cartão */
+.open {
+    position: absolute; 
+    width: 450px; 
+    height: 500px;
+    left: 0; 
+    top: 0; 
+    background-color: transparent; 
+    z-index: 6;
+    cursor: pointer; 
+}
+
+
+#open:checked~.card-front {
+    transform: rotateY(-155deg); 
+    box-shadow: inset 100px 20px 100px rgba(0, 0, 0, .13), 30px 0 50px rgba(0, 0, 0, 0.1); 
+    border-radius: 10px; 
+}
+
+
+#open:checked~.card-front:before {
+    z-index: 5; 
+}
